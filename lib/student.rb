@@ -33,7 +33,7 @@ class Student
 
     DB[:conn].execute(sql, @name, @grade)
 
-    @id = DB[:conn].execute("SELECT MAX(id) FROM students").join.to_i
+    @id = @id = DB[:conn].execute("SELECT last_insert_rowid() FROM songs")[0][0]
   end
 
   def self.create(hash)
